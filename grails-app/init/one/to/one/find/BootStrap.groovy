@@ -1,5 +1,7 @@
 package one.to.one.find
 
+import com.example.Cat
+import com.example.CatHouse
 import com.example.Dog
 import com.example.DogHouse
 
@@ -17,8 +19,11 @@ class BootStrap {
             house.dog = dog
             house.save(flush: true, failOnError: true)
 
-            println("Dog in house")
             println("Created dog: ${dog}")
+
+            CatHouse catHouse = new CatHouse(size: "small").save(flush: true, failOnError: true)
+            Cat cat = new Cat(name:"Felix", catHouse: catHouse).save(flush: true, failOnError: true)
+            println("Cat created: ${cat}")
         }
 
 
